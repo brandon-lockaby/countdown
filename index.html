@@ -18,7 +18,7 @@
 		</table>
 		<script>
 			var then = new Date("January 7 2014 17:13:00 GMT-0400 (EDT)");
-			var div = document.getElementById("hours");
+			var elem = document.getElementById("hours");
 			setInterval(function() {
 				var now = Date.now();
 				var hours = ((then - now) / (1000 * 60 * 60));
@@ -27,8 +27,8 @@
 				while(hours.length < 8)
 					hours = hours + "0";
 				hours = hours.substr(0, 8);
-				if(div.textContent !== hours) {
-					div.textContent = hours;
+				if(elem.textContent !== hours) {
+					elem.textContent = hours;
 				}
 			}, 10);
 		</script>
