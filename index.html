@@ -18,7 +18,25 @@
 		</table>
 		<script>
 			var then = new Date("January 7 2014 17:13:00 GMT-0400 (EDT)");
+
 			var elem = document.getElementById("hours");
+
+			var head = document.getElementsByTagName("head")[0];
+			var favicon_elem = document.getElementById("favicon");
+			var favicon_value = 0;
+			var canvas = document.createElement("canvas") || null;
+			var ctx;
+			var favicon = document.createElement("img");
+			favicon.addEventListener("load", function(evt) {
+				if(typeof canvas.getContext === "function") {
+					canvas.height = canvas.width = 32;
+					ctx = canvas.getContext("2d");
+					ctx.font = 'bold 16px "Lucida Console", monospace';
+					ctx.fillStyle = "#fff"; 
+				}
+			});
+			favicon.src = favicon_elem.href;
+
 			setInterval(function() {
 				var now = Date.now();
 				var hours = ((then - now) / (1000 * 60 * 60));
@@ -27,8 +45,27 @@
 				while(hours.length < 8)
 					hours = hours + "0";
 				hours = hours.substr(0, 8);
+
 				if(elem.textContent !== hours) {
+
 					elem.textContent = hours;
+
+					// draw on favicon
+					if(ctx) {
+						hours = Math.floor(hours);
+						if(1 || hours !== favicon_value) {
+							favicon_value = hours;
+							hours = hours.toString();
+							ctx.clearRect(0, 0, canvas.width, canvas.height);
+							ctx.drawImage(favicon, 0, 0);
+							ctx.fillText(hours.substr(0, 2), 0, Math.floor(canvas.height / 2));
+							ctx.fillText(hours.substr(2, 2), 0, canvas.height);
+							//head.removeChild(favicon_elem);
+							//favicon_elem = favicon_elem.cloneNode(true);
+							favicon_elem.href = canvas.toDataURL("image/png");
+							//head.appendChild(favicon_elem);
+						}
+					}
 				}
 			}, 10);
 		</script>
