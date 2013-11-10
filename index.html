@@ -29,7 +29,7 @@
 			var favicon = document.createElement("img");
 			favicon.addEventListener("load", function(evt) {
 				if(typeof canvas.getContext === "function") {
-					canvas.height = canvas.width = 32;
+					canvas.height = canvas.width = 24;
 					ctx = canvas.getContext("2d");
 					ctx.font = 'bold 16px "Lucida Console", monospace';
 					ctx.fillStyle = "#fff"; 
