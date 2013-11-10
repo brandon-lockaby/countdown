@@ -1,5 +1,7 @@
+<!doctype html>
 <html>
 	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 		<title>countdown</title>
 		<link id="favicon" rel="icon" type="image/png" href="favicon.png" />
 		<style>
@@ -64,10 +66,10 @@
 							ctx.drawImage(favicon, 0, 2);
 							ctx.fillText(hours.substr(0, 2), 0, Math.floor(canvas.height / 2) - 1);
 							ctx.fillText(hours.substr(2, 2), 0, canvas.height - 1);
-							//head.removeChild(favicon_elem);
-							//favicon_elem = favicon_elem.cloneNode(true);
+							head.removeChild(favicon_elem);
+							favicon_elem = favicon_elem.cloneNode(true);
 							favicon_elem.href = canvas.toDataURL("image/png");
-							//head.appendChild(favicon_elem);
+							head.appendChild(favicon_elem);
 						}
 					}
 				}
