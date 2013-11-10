@@ -66,8 +66,8 @@
 							favicon_value = hours;
 							ctx.clearRect(0, 0, canvas.width, canvas.height);
 							ctx.drawImage(favicon, 0, 2);
-							ctx.fillText(hours.substr(0, 2), 0, Math.floor(canvas.height / 2) - 1);
-							ctx.fillText(hours.substr(2, 2), 0, canvas.height - 1);
+							ctx.fillText(hours.substr(0, 2), 2, Math.floor(canvas.height / 2) - 1);
+							ctx.fillText(hours.substr(2, 2), 2, canvas.height - 1);
 							head.removeChild(favicon_elem);
 							favicon_elem = favicon_elem.cloneNode(true);
 							favicon_elem.href = canvas.toDataURL("image/png");
