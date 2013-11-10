@@ -61,10 +61,9 @@
 
 					// draw on favicon
 					if(ctx) {
-						hours = Math.floor(hours);
+						hours = hours.substr(0, 4);
 						if(1 || hours !== favicon_value) {
 							favicon_value = hours;
-							hours = hours.toString();
 							ctx.clearRect(0, 0, canvas.width, canvas.height);
 							ctx.drawImage(favicon, 0, 2);
 							ctx.fillText(hours.substr(0, 2), 0, Math.floor(canvas.height / 2) - 1);
